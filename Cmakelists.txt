@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.11)
+project(osgb_to_point_cloud)
+
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(PCL REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+
+find_package(OpenSceneGraph REQUIRED osg osgDB osgViewer osgGA osgUtil)
+include_directories(${OPENSCENEGRAPH_INCLUDE_DIRS})
+
+# find_package(OpenSceneGraph REQUIRED COMPONENTS osgDB osgUtil osgViewer)
+# include_directories(${OPENSCENEGRAPH_INCLUDE_DIRS})
+# link_directories(${OSG_LIBRARY_DIR})
+
+
+
+add_executable(osgb_to_point_cloud osgb_to_point_cloud.cpp)
+
+target_link_libraries(osgb_to_point_cloud ${OPENSCENEGRAPH_LIBRARIES})
+
+
